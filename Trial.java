@@ -1,7 +1,7 @@
 package bank2;
 
 // This is a multi-class object based banking app which allows users to deposit and 
-// withdraw from checking and savings once entering the correct ID number and PIN
+// withdraw from checking and savings and update PIN once entering the correct ID number and PIN
 // Polymorphism is used to provide different menus for users and the admin
 // The admin has privileges to create or delete users
 
