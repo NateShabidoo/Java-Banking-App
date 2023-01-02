@@ -1,4 +1,4 @@
-package Bank2;
+package bank2;
 
 import java.util.Scanner;
 import java.util.ArrayList;
