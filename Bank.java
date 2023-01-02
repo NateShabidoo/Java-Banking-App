@@ -1,14 +1,16 @@
 package bank2;
 
-//This is a multi-class object based banking app which allows users to deposit and withdraw from checking 
-//and savings once entering the correct ID number and PIN
+// This is a multi-class object based banking app which allows users to deposit and withdraw from checking 
+// and savings once entering the correct ID number and PIN
+// Polymorphism is used to provide different menus to users and the admin
+// Admin has privileges to create or delete users
 
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Bank {
    
-    private static ArrayList<Trial> accounts = new ArrayList();
+    protected static ArrayList<Trial> accounts = new ArrayList();
 
     public static void main(String[] args) {
         init();
@@ -20,10 +22,11 @@ public class Bank {
         accounts.add(new Trial(100, 20.03, 100.00, "Adam", "Driver", 1234));
         accounts.add(new Trial(102, 440.03, 100.00, "Michael", "Jordan", 1111));
         accounts.add(new Trial(103, 442.03, 101.00, "Jeff", "Bezos", 1111));
-      
+        accounts.add(new Admin(1, "Admin", 1111));
      }
+   
     
-    private static void pinEnter(int tempID) {
+    /*private static void pinEnter(int tempID) {
     	System.out.println("Enter PIN");
     	Scanner scan = new Scanner(System.in); 
         int y = scan.nextInt(); // this is pin they enter
@@ -40,21 +43,13 @@ public class Bank {
         		 pinEnter(tempID);
         	 }
         }
+    }*/
+    
+    public ArrayList<Trial> getAccounts() {
+    	return accounts;
     }
     
-    private static void createUser() {
-    	System.out.println("Please enter user first name");
-    	Scanner scan = new Scanner(System.in); 
-        String y = scan.nextLine(); // this is user first name
-        System.out.println("Please enter user last name");
-    	Scanner scan2 = new Scanner(System.in); 
-        String z = scan2.nextLine(); // this is user last name
-        System.out.println("Please enter user savings deposit");
-    	Scanner scan3 = new Scanner(System.in); 
-        double x = scan3.nextDouble(); // this is user savings deposit
- 
-        accounts.add(new Trial(accounts.size(), 0.00, x, y, z, 4444));
-    }
+    
     
     private static void withdrawChecking(int tempID) {
     	boolean found=false;
@@ -161,7 +156,7 @@ public class Bank {
         }
     	}
     
-    private static void checkingMenu(int tempID) {
+    protected static void checkingMenu(int tempID) {
     	System.out.println("Enter 1 for checking balance, 2 to withdraw from checking, 3 to deposit to checking, 4 for main menu");
     	Scanner scan = new Scanner(System.in); 
         int p = scan.nextInt(); // this is the users selection
@@ -186,7 +181,7 @@ public class Bank {
         	}
     	}
     
-    private static void savingsMenu(int tempID) {
+    protected static void savingsMenu(int tempID) {
     	System.out.println("Enter 1 for savings balance, 2 to withdraw from savings, 3 to deposit to savings, 4 for main menu");
     	Scanner scan = new Scanner(System.in); 
         int p = scan.nextInt(); // this is the users selection
@@ -211,7 +206,7 @@ public class Bank {
         	}
     	}
     
-    private static void updatePIN(int tempID) {
+    protected static void updatePIN(int tempID) {
     	boolean found=false;
         for(Trial t:accounts) {
         	if(tempID == t.getID()) {
@@ -220,13 +215,13 @@ public class Bank {
                 int y = scan.nextInt(); // this is new pin they enter
                 	System.out.println("Your PIN has been updated to "+y);
                 	t.setPIN(y);
-                	subMenu(tempID);
+                	t.subMenu(tempID);
                 	break;
         	}
         	}
     	}
     
-    private static void subMenu(int tempID) {
+    protected static void subMenu(int tempID) {
     	System.out.println("Enter 1 for checking, 2 for savings, 3 to update PIN, 4 to exit");
     	Scanner scan = new Scanner(System.in); 
         int p = scan.nextInt(); // this is the users selection
@@ -251,19 +246,27 @@ public class Bank {
         	}
     	}
       
-    private static void menu() {
+    public static void menu() {
             System.out.println("Main menu, enter user ID");
             Scanner ident =new Scanner(System.in);
             int x = ident.nextInt();
             boolean found=false;
             for(Trial t:accounts) {
-                    if(x == t.getID()) {
+                    if(x == t.getID() && x == 1) {
                             System.out.println("Welcome " + t.getFname());
                             found=true;
                             int tempID = t.getID();
-                            pinEnter(tempID);
+                            t.pinEnter(tempID);
                             break;   
-                       } 
+                       }
+                    else if(x == t.getID() && x != 1) {
+                    		System.out.println("Welcome "+ t.getFname());
+                    		found = true;
+                    		int tempID = t.getID();
+                    		t.pinEnter(tempID);
+                    		break;
+                    }
+                    	
                     }
             
             if(!found) {
