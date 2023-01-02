@@ -13,20 +13,20 @@ public class Admin extends Trial {
 	protected void createUser(int tempID) {
     	System.out.println("Please enter user first name");
     	Scanner scan = new Scanner(System.in); 
-      String y = scan.nextLine(); // this is user first name
-      System.out.println("Please enter user last name");
+      	String y = scan.nextLine(); // this is user first name
+      	System.out.println("Please enter user last name");
     	Scanner scan2 = new Scanner(System.in); 
-      String z = scan2.nextLine(); // this is user last name
-      System.out.println("Please enter user  deposit");
+      	String z = scan2.nextLine(); // this is user last name
+      	System.out.println("Please enter user  deposit");
     	Scanner scan3 = new Scanner(System.in); 
-      double x = scan3.nextDouble(); // this is user checking deposit
-      int u = Bank.accounts.size()+100;
-      Bank.accounts.add(new Trial(Bank.accounts.size()+100, 0.00, x, y, z, 4444));
-      System.out.println("New user created");
-      System.out.println("User name is: "+y+" "+z);
-      System.out.println("User ID is "+ u);
-      System.out.println("User checking deposit is: "+ x);
-      subMenu(tempID);
+      	double x = scan3.nextDouble(); // this is user checking deposit
+      	int u = Bank.accounts.size()+100;
+      	Bank.accounts.add(new Trial(Bank.accounts.size()+100, 0.00, x, y, z, 4444));
+      	System.out.println("New user created");
+      	System.out.println("User name is: "+y+" "+z);
+      	System.out.println("User ID is "+ u);
+      	System.out.println("User checking deposit is: "+ x);
+      	subMenu(tempID);
     }
 	
    public void pinEnter(int tempID) {
@@ -76,11 +76,11 @@ public class Admin extends Trial {
 
 	protected void deleteUser(int tempID) {
 		System.out.println("Enter User ID to delete, otherwise enter 0 to exit");
-    	Scanner scan = new Scanner(System.in); 
-        int p = scan.nextInt(); // this is the users selection
-        boolean found=false;
-        int z = tempID;
-        for(int i = 0; i<Bank.accounts.size(); i++) {
+    		Scanner scan = new Scanner(System.in); 
+        	int p = scan.nextInt(); // this is the users selection
+        	boolean found=false;
+        	int z = tempID;
+        	for(int i = 0; i<Bank.accounts.size(); i++) {
         	if(Bank.accounts.get(i).getID() == p) {
         	int y = Bank.accounts.get(i).getID();
         	Bank.accounts.remove(i);
