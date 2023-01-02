@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public class Admin extends Trial {
 
-	public Admin(int ID, String fname, int pinNumber /*,Bank bank*/){
+	public Admin(int ID, String fname, int pinNumber){
 			super(ID, fname, pinNumber);
 		}
 	
@@ -29,7 +29,7 @@ public class Admin extends Trial {
       	Bank.accounts.add(new Trial(Bank.accounts.size()+100, 0.00, x, y, z, 4444));
       	System.out.println("New user created");
       	System.out.println("User name is: "+y+" "+z);
-      	System.out.println("User ID is "+ u);
+      	System.out.println("User ID is: "+ u);
       	System.out.println("User checking deposit is: "+ x);
       	subMenu(tempID);
     }
