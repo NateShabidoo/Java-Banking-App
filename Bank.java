@@ -15,7 +15,6 @@ public class Bank {
     public static void main(String[] args) {
         init();
         menu();
-        
     }
     
     private static void init(){
@@ -24,33 +23,11 @@ public class Bank {
         accounts.add(new Trial(103, 442.03, 101.00, "Jeff", "Bezos", 1111));
         accounts.add(new Admin(1, "Admin", 1111));
      }
-   
-    
-    /*private static void pinEnter(int tempID) {
-    	System.out.println("Enter PIN");
-    	Scanner scan = new Scanner(System.in); 
-        int y = scan.nextInt(); // this is pin they enter
-        
-        boolean found=false;
-        for(Trial t:accounts) {
-        	 if(tempID == t.getID() && y == t.getPIN()) {
-        		 System.out.println("Correct PIN");
-        		 subMenu(tempID);
-        		 break;
-        	 }
-        	 else if(tempID == t.getID() && y != t.getPIN()){
-        		 System.out.println("Incorrect PIN");
-        		 pinEnter(tempID);
-        	 }
-        }
-    }*/
     
     public ArrayList<Trial> getAccounts() {
     	return accounts;
     }
-    
-    
-    
+
     private static void withdrawChecking(int tempID) {
     	boolean found=false;
         for(Trial t:accounts) {
@@ -266,9 +243,7 @@ public class Bank {
                     		t.pinEnter(tempID);
                     		break;
                     }
-                    	
-                    }
-            
+                    }      
             if(!found) {
                     System.out.println("We're sorry, you are not in the system");
                     menu();
