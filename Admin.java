@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public class Admin extends Trial {
 
-	public Admin(int ID, String fname, int pinNumber){
+	protected Admin(int ID, String fname, int pinNumber){
 			super(ID, fname, pinNumber);
 		}
 	
@@ -34,7 +34,7 @@ public class Admin extends Trial {
       	subMenu(tempID);
     }
 	
-   public void pinEnter(int tempID) {
+   	protected void pinEnter(int tempID) {
     	System.out.println("Enter PIN");
     	Scanner scan = new Scanner(System.in); 
         int y = scan.nextInt(); // this is pin they enter
@@ -80,30 +80,30 @@ public class Admin extends Trial {
 	}
 
 	protected void deleteUser(int tempID) {
-		System.out.println("Enter User ID to delete, otherwise enter 0 to exit");
-    		Scanner scan = new Scanner(System.in); 
-        	int p = scan.nextInt(); // this is the users selection
-        	boolean found=false;
-        	int z = tempID;
-        	for(int i = 0; i<Bank.accounts.size(); i++) {
-        	if(Bank.accounts.get(i).getID() == p) {
-        	int y = Bank.accounts.get(i).getID();
-        	Bank.accounts.remove(i);
-        	System.out.println("User ID "+y+" is now deleted");
+	System.out.println("Enter User ID to delete, otherwise enter 0 to exit");
+    	Scanner scan = new Scanner(System.in); 
+        int p = scan.nextInt(); // this is the users selection
+        boolean found=false;
+        int z = tempID;
+        for(int i = 0; i<Bank.accounts.size(); i++) {
+        if(Bank.accounts.get(i).getID() == p) {
+        int y = Bank.accounts.get(i).getID();
+        Bank.accounts.remove(i);
+        System.out.println("User ID "+y+" is now deleted");
+        subMenu(tempID);
+        break;
+        }
+        else if (p == 0) {
         	subMenu(tempID);
         	break;
         	}
-        	else if (p == 0) {
-        		subMenu(tempID);
-        		break;
+        else if(Bank.accounts.get(i).getID() != p) {
+        	continue;
         	}
-        	else if(Bank.accounts.get(i).getID() != p) {
-        		continue;
-        	}
-        	else  {
-        		System.out.println("User ID not found");
-        		deleteUser(tempID);
-        		break;
+        else  {
+        	System.out.println("User ID not found");
+        	deleteUser(tempID);
+        	break;
         	}
         }
 }
