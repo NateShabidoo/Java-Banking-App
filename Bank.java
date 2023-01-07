@@ -12,7 +12,7 @@ public class Bank {
    
     protected static ArrayList<Trial> accounts = new ArrayList();
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         init();
         menu();
     }
@@ -24,7 +24,7 @@ public class Bank {
         accounts.add(new Admin(1, "Admin", 1111));
      }
     
-    public ArrayList<Trial> getAccounts() {
+    protected ArrayList<Trial> getAccounts() {
     	return accounts;
     }
 
@@ -223,7 +223,7 @@ public class Bank {
         	}
     	}
       
-    public static void menu() {
+    protected static void menu() {
             System.out.println("Main menu, enter user ID");
             Scanner ident =new Scanner(System.in);
             int x = ident.nextInt();
