@@ -9,7 +9,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Trial {
-    
     private double savingsBalance;
     private double checkingBalance;
     private int ID;
@@ -22,7 +21,7 @@ public class Trial {
     private int tempID;
     private ArrayList<Trial> accounts2;
    
-public Trial(int ID, double savingsBalance, double checkingBalance, String fname, String lname, int pinNumber){
+protected Trial(int ID, double savingsBalance, double checkingBalance, String fname, String lname, int pinNumber){
    if (savingsBalance > 0.0) {
    this.savingsBalance = savingsBalance;
    }
@@ -35,15 +34,15 @@ public Trial(int ID, double savingsBalance, double checkingBalance, String fname
    this.pinNumber = pinNumber;
 }
 
-public Trial(int ID, String fname, int pinNumber){
-	   this.ID = ID;
-	   this.fname = fname;
-	   this.pinNumber = pinNumber;
-	}
+protected Trial(int ID, String fname, int pinNumber){
+   this.ID = ID;
+   this.fname = fname;
+   this.pinNumber = pinNumber;
+   }
 
-public void pinEnter(int tempID) {
-	System.out.println("Enter PIN");
-	Scanner scan = new Scanner(System.in); 
+protected void pinEnter(int tempID) {
+    System.out.println("Enter PIN");
+    Scanner scan = new Scanner(System.in); 
     int y = scan.nextInt(); // this is pin they enter
     boolean found=false;
     int z = tempID;
@@ -62,8 +61,8 @@ public void pinEnter(int tempID) {
 }
 
 protected void subMenu(int tempID) {
-	System.out.println("Enter 1 for checking, 2 for savings, 3 to update PIN, 4 to exit");
-	Scanner scan = new Scanner(System.in); 
+    System.out.println("Enter 1 for checking, 2 for savings, 3 to update PIN, 4 to exit");
+    Scanner scan = new Scanner(System.in); 
     int p = scan.nextInt(); // this is the users selection
     boolean found=false;
     for(Trial t:Bank.accounts) {
@@ -86,47 +85,47 @@ protected void subMenu(int tempID) {
     	}
 	}
 
-public ArrayList<Trial> getList() {
+protected ArrayList<Trial> getList() {
     return accounts2;
 }
 
-public int getID() {
+protected int getID() {
       return ID;
 }
 
-public String getFname() {
+protected String getFname() {
     return fname;
 }
 
-public String setFname(String name) {
+protected String setFname(String name) {
     this.fname = name;
-	return fname;
+    return fname;
 }
 
-public int getPIN() {
+protected int getPIN() {
     return pinNumber;
 }
 
-public double getChecking() {
-	return checkingBalance;
+protected double getChecking() {
+    return checkingBalance;
 }
 
-public double setChecking(double amount) {
-	this.checkingBalance = amount;
-	return checkingBalance;
+protected double setChecking(double amount) {
+     this.checkingBalance = amount;
+     return checkingBalance;
 }
 
-public int setPIN(int newPIN) {
-	this.pinNumber = newPIN;
-	return pinNumber;
+protected int setPIN(int newPIN) {
+     this.pinNumber = newPIN;
+     return pinNumber;
 }
 
-public double setSavings(double amount) {
+protected double setSavings(double amount) {
 	this.savingsBalance = amount;
 	return savingsBalance;
 }
 
-public double getSavings() {
+protected double getSavings() {
 	return savingsBalance;
 }
 }
