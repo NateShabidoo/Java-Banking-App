@@ -1,4 +1,9 @@
-package bank10;
+// This is an interface multi-class object based banking app which allows users to deposit and withdraw from checking 
+// and savings and update PIN once entering the correct ID number and PIN
+// Admin and User classes implementing Bank interface provide different submenus to users and the admin
+// Admin has privileges to create or delete users
+
+package bankInterface;
 
 import java.util.Scanner;
 
