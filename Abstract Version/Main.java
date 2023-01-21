@@ -1,3 +1,8 @@
+// This is an abstract multi-class object based banking app which allows users to deposit and withdraw from checking 
+// and savings and update PIN once entering the correct ID number and PIN
+// Admin and User classes extending abstract bank class provide different submenus to users and the admin
+// Admin has privileges to create or delete users
+
 package abstractBank;
 
 import java.util.ArrayList;
