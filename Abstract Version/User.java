@@ -8,17 +8,6 @@ package abstractBank;
 import java.util.Scanner;
 
 public class User extends Bank {
-	
-    private double savingsBalance;
-    private double checkingBalance;
-    private int ID;
-    private String fname;
-    private String lname;
-    private int userID;
-    private String userFname;
-    private String userLname;
-    private int pinNumber;
-    private int tempID;
 
 	protected User(int ID, double savingsBalance, double checkingBalance, String fname, String lname, int pinNumber){
  	   if (savingsBalance > 0.0) {
