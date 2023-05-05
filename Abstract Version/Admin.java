@@ -8,12 +8,6 @@ package abstractBank;
 import java.util.Scanner;
 
 public class Admin extends Bank{
-
-    private int ID;
-    private String fname;
-    private int userID;
-    private int pinNumber;
-    private int tempID;
     
     protected Admin(int ID, String fname, int pinNumber){
    	   this.ID = ID;
