@@ -7,6 +7,13 @@ package abstractBank;
 
 abstract class Bank {
 	
+	protected double savingsBalance;
+    	protected double checkingBalance;
+    	protected int ID;
+    	protected String fname;
+    	protected String lname;
+    	protected int pinNumber;
+	
 	public abstract void pinEnter();
 	
 	public abstract void subMenu(int tempID); 
