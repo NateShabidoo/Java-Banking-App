@@ -28,8 +28,9 @@ private static void init(){
 protected static void menu() {
     System.out.println("Main menu, enter user ID");
     Scanner ident =new Scanner(System.in);
+    try {
     int x = ident.nextInt();
-    boolean found=false;
+    boolean found=false;   
     for(Bank t:accounts) {
             if(x == t.getID() && x == 1) {
                     System.out.println("Welcome " + t.getFname());
@@ -45,13 +46,17 @@ protected static void menu() {
             		User.pinEnter(tempID);
             		break;
             }
-            }
-    
+            }  
     if(!found) {
             System.out.println("We're sorry, you are not in the system");
             menu();
     }
+    }catch (Exception e) {
+        System.out.println("Invalid User ID");
+        System.out.println("Please Enter a Valid 3 Digit Account Number");
+        menu();
     }
+}
 }
 	
 
