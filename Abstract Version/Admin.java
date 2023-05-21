@@ -18,6 +18,7 @@ public class Admin extends Bank{
     public static void pinEnter(int tempID) {
     	System.out.println("Enter PIN");
     	Scanner scan = new Scanner(System.in); 
+    	try {
         int y = scan.nextInt(); // this is pin they enter
         boolean found=false;
         int z = tempID;
@@ -33,6 +34,12 @@ public class Admin extends Bank{
         		 break;
         	 }
         }
+    	}
+		catch (Exception d) {
+	        System.out.println("Invalid PIN");
+	        System.out.println("Please Enter a Valid 4 Digit PIN Number");
+	        pinEnter(tempID);
+	      }	
    }
 
     public void updatePIN(int tempID) {
@@ -53,7 +60,8 @@ public class Admin extends Bank{
     
     public void subMenu(int tempID) {
     	System.out.println("Enter 1 to create user, 2 to delete user, 3 to update PIN, 4 to exit");
-    	Scanner scan = new Scanner(System.in); 
+    	Scanner scan = new Scanner(System.in);
+    	try {
         int p = scan.nextInt(); // this is the users selection
         boolean found=false;
         for(Bank t:Main.accounts) {
@@ -73,7 +81,16 @@ public class Admin extends Bank{
         		 Main.menu();
         		 break;
         	}
+        	else {
+        		System.out.println("Invalid Choice");
+        		subMenu(tempID);
         	}
+        	}
+    	}
+    	catch (Exception h) {
+	        System.out.println("Invalid Choice");
+	        subMenu(tempID);
+	      }	
     }
 
     public void createUser(int tempID) {
@@ -85,14 +102,20 @@ public class Admin extends Bank{
         String z = scan2.nextLine(); // this is user last name
         System.out.println("Please enter user  deposit");
     	Scanner scan3 = new Scanner(System.in); 
+    	try {
         double x = scan3.nextDouble(); // this is user checking deposit
         int u = Main.accounts.size()+100;
         Main.accounts.add(new User(Main.accounts.size()+100, 0.00, x, y, z, 4444));
         System.out.println("New user created");
         System.out.println("User name is: "+y+" "+z);
         System.out.println("User ID is "+ u);
-        System.out.println("User checking deposit is: "+ x);
+        System.out.println("User checking deposit is: "+ String.format("%.2f",x));
         subMenu(tempID);
+    	}
+    	catch (Exception n) {
+    		System.out.println("Invalid Value, Restarting 'Create New User'");
+    		createUser(tempID);	
+    	}
     }
     
     public void deleteUser(int tempID) {
