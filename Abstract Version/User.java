@@ -25,6 +25,7 @@ public class User extends Bank {
 	public static void pinEnter(int tempID) {
 		System.out.println("Enter PIN");
 		Scanner scan = new Scanner(System.in); 
+		try {
 	    int y = scan.nextInt(); // this is pin they enter
 	    boolean found=false;
 	    int z = tempID;
@@ -40,6 +41,12 @@ public class User extends Bank {
 	    		 break;
 	    }
 	    }
+	}
+		catch (Exception f) {
+	        System.out.println("Invalid PIN");
+	        System.out.println("Please Enter a Valid 4 Digit PIN Number");
+	        pinEnter(tempID);
+	      }	
 	}
 	
 	public void updatePIN(int tempID) {
@@ -61,6 +68,7 @@ public class User extends Bank {
 	public void subMenu(int tempID) {
 		System.out.println("Enter 1 for checking, 2 for savings, 3 to update PIN, 4 to exit");
 		Scanner scan = new Scanner(System.in); 
+		try {
 	    int p = scan.nextInt(); // this is the users selection
 	    boolean found=false;
 	    for(Bank t:Main.accounts) {
@@ -80,12 +88,23 @@ public class User extends Bank {
 	    		 Main.menu();
 	    		 break;
 	    	}
+	    	else {
+	    		System.out.println("Invalid Choice");
+	    		subMenu(tempID);
 	    	}
+	    	}
+		} catch (Exception g) {
+	        System.out.println("Invalid Choice");
+	        subMenu(tempID);
+	      }	
+		
 		}
+		
 
 	public void checkingMenu(int tempID) {
 		System.out.println("Enter 1 for checking balance, 2 to withdraw from checking, 3 to deposit to checking, 4 for main menu");
 		Scanner scan = new Scanner(System.in); 
+		try {
 	    int p = scan.nextInt(); // this is the users selection
 	    boolean found=false;
 	    for(Bank t:Main.accounts) {
@@ -106,6 +125,10 @@ public class User extends Bank {
 	    		 break;
 	    	 }
 	    	}
+		} catch (Exception b) {
+	        System.out.println("Invalid Choice");
+	        checkingMenu(tempID);
+		}
 		}
 
 	public void withdrawChecking(int tempID) {
@@ -271,4 +294,5 @@ public class User extends Bank {
 		this.savingsBalance = amount;
 		return savingsBalance;
 	}
+	
 }
