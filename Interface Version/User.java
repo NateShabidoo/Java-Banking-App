@@ -34,8 +34,9 @@ public class User implements Bank{
     	}
  
 public static void pinEnter(int tempID) {
-		System.out.println("Enter PIN");
-		Scanner scan = new Scanner(System.in); 
+	    System.out.println("Enter PIN");
+	    Scanner scan = new Scanner(System.in); 
+	    try {
 	    int y = scan.nextInt(); // this is pin they enter
 	    boolean found=false;
 	    int z = tempID;
@@ -49,14 +50,18 @@ public static void pinEnter(int tempID) {
 	    		 System.out.println("Incorrect PIN");
 	    		 pinEnter(tempID);
 	    		 break;
-	    }
-	    }
-	}
+		 }
+		 }
+		 } catch (Exception t){
+			System.out.println("Invalid PIN Entry");
+			pinEnter(tempID);
+			}
+		}
 
 public void updatePIN(int tempID) {
 	boolean found=false;
 	int z = tempID;
-    for(Bank t:Main.accounts) {
+        for(Bank t:Main.accounts) {
     	if(z == t.getID()) {
     		System.out.println("Please enter new 4 digit PIN");
         	Scanner scan = new Scanner(System.in); 
@@ -72,9 +77,9 @@ public void updatePIN(int tempID) {
 public void subMenu(int tempID) {
 	System.out.println("Enter 1 for checking, 2 for savings, 3 to update PIN, 4 to exit");
 	Scanner scan = new Scanner(System.in); 
-    int p = scan.nextInt(); // this is the users selection
-    boolean found=false;
-    for(Bank t:Main.accounts) {
+        int p = scan.nextInt(); // this is the users selection
+        boolean found=false;
+        for(Bank t:Main.accounts) {
     	if(p == 1) {
    		 checkingMenu(tempID);
    		 break;
