@@ -112,9 +112,9 @@ public void subMenu(int tempID) {
 public void checkingMenu(int tempID) {
 	System.out.println("Enter 1 for checking balance, 2 to withdraw from checking, 3 to deposit to checking, 4 for main menu");
 	Scanner scan = new Scanner(System.in); 
-    int p = scan.nextInt(); // this is the users selection
-    boolean found=false;
-    for(Bank t:Main.accounts) {
+        int p = scan.nextInt(); // this is the users selection
+        boolean found=false;
+        for(Bank t:Main.accounts) {
     	if(tempID == t.getID() && p == 1) {
       		 checkChecking(tempID);
       		 break;
@@ -130,13 +130,13 @@ public void checkingMenu(int tempID) {
     	else if(tempID == t.getID() && p == 4) {
     		 subMenu(tempID);
     		 break;
-    	 }
+    	}
     	}
 	}
 
 public void withdrawChecking(int tempID) {
 	boolean found=false;
-    for(Bank t:Main.accounts) {
+        for(Bank t:Main.accounts) {
     	if(tempID == t.getID()) {
     		System.out.println("How much would you like to withdraw from checking?");
         	Scanner scan = new Scanner(System.in); 
@@ -159,7 +159,7 @@ public void withdrawChecking(int tempID) {
 
 public void depositChecking(int tempID) {
 	boolean found=false;
-    for(Bank t:Main.accounts) {
+        for(Bank t:Main.accounts) {
     	if(tempID == t.getID()) {
     		System.out.println("How much would you like to deposit to checking?");
         	Scanner scan = new Scanner(System.in); 
@@ -176,7 +176,7 @@ public void depositChecking(int tempID) {
 
 public void checkChecking(int tempID) {
 	boolean found=false;
-    for(Bank t:Main.accounts) {
+        for(Bank t:Main.accounts) {
     	if(tempID == t.getID()) {
    		 System.out.println("Your checking balance is $"+t.getChecking());
    		 checkingMenu(tempID);
@@ -188,9 +188,9 @@ public void checkChecking(int tempID) {
 public void savingsMenu(int tempID) {
 	System.out.println("Enter 1 for savings balance, 2 to withdraw from savings, 3 to deposit to savings, 4 for main menu");
 	Scanner scan = new Scanner(System.in); 
-    int p = scan.nextInt(); // this is the users selection
-    boolean found=false;
-    for(Bank t:Main.accounts) {
+        int p = scan.nextInt(); // this is the users selection
+        boolean found=false;
+        for(Bank t:Main.accounts) {
     	if(tempID == t.getID() && p == 1) {
       		 checkSavings(tempID);
       		 break;
