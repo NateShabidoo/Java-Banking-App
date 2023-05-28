@@ -11,11 +11,11 @@ import java.util.Iterator;
 
 public class Admin extends Trial {
 
-	protected Admin(int ID, String fname, int pinNumber /*,Bank bank*/){
+   protected Admin(int ID, String fname, int pinNumber){
 			super(ID, fname, pinNumber);
 		}
 	
-	protected void createUser(int tempID) {
+   protected void createUser(int tempID) {
     	System.out.println("Please enter user first name");
     	Scanner scan = new Scanner(System.in); 
         String y = scan.nextLine(); // this is user first name
@@ -37,6 +37,7 @@ public class Admin extends Trial {
    protected void pinEnter(int tempID) {
     	System.out.println("Enter PIN");
     	Scanner scan = new Scanner(System.in); 
+    	try {
         int y = scan.nextInt(); // this is pin they enter
         boolean found=false;
         int z = tempID;
@@ -52,11 +53,16 @@ public class Admin extends Trial {
         		 break;
         	 }
         }
+    	} catch (Exception e){
+    		System.out.println("Invalid Entry");
+    		pinEnter(tempID);
+    	}
    }
 	
-	protected void subMenu(int tempID) {
+   protected void subMenu(int tempID) {
     	System.out.println("Enter 1 to create user, 2 to delete user, 3 to update PIN, 4 to exit");
     	Scanner scan = new Scanner(System.in); 
+    	try {
         int p = scan.nextInt(); // this is the users selection
         boolean found=false;
         for(Trial t:Bank.accounts) {
@@ -77,14 +83,19 @@ public class Admin extends Trial {
         		 break;
         	}
         	}
+    	} catch (Exception e) {
+    		System.out.println("Invalid Entry");
+    		subMenu(tempID);
+    	}
 	}
 
-	protected void deleteUser(int tempID) {
-		System.out.println("Enter User ID to delete, otherwise enter 0 to exit");
+    protected void deleteUser(int tempID) {
+	System.out.println("Enter User ID to delete, otherwise enter 0 to exit");
     	Scanner scan = new Scanner(System.in); 
         int p = scan.nextInt(); // this is the users selection
         boolean found=false;
         int z = tempID;
+
         for(int i = 0; i<Bank.accounts.size(); i++) {
         	if(Bank.accounts.get(i).getID() == p) {
         	int y = Bank.accounts.get(i).getID();
@@ -108,4 +119,3 @@ public class Admin extends Trial {
         }
 }
 }
-
