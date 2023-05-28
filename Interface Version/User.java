@@ -60,6 +60,7 @@ public static void pinEnter(int tempID) {
 
 public void updatePIN(int tempID) {
 	boolean found=false;
+	try {
 	int z = tempID;
         for(Bank t:Main.accounts) {
     	if(z == t.getID()) {
@@ -70,13 +71,18 @@ public void updatePIN(int tempID) {
             	setPIN(y);
             	t.subMenu(tempID);
             	break;
-    	}
-    	}
+	    	}
+	    }
+	} catch (Exception y) {
+	    	System.out.println("Invalid PIN Format");
+	    	updatePIN(tempID);
+	    }
 	}
 
 public void subMenu(int tempID) {
 	System.out.println("Enter 1 for checking, 2 for savings, 3 to update PIN, 4 to exit");
 	Scanner scan = new Scanner(System.in); 
+	try {
         int p = scan.nextInt(); // this is the users selection
         boolean found=false;
         for(Bank t:Main.accounts) {
@@ -95,9 +101,13 @@ public void subMenu(int tempID) {
     	else if(p == 4) {
     		 Main.menu();
     		 break;
-    	}
-    	}
 	}
+	}
+	} catch (Exception e) {
+		System.out.println("Invalid Selection");
+		subMenu(tempID);
+	}
+}
 
 public void checkingMenu(int tempID) {
 	System.out.println("Enter 1 for checking balance, 2 to withdraw from checking, 3 to deposit to checking, 4 for main menu");
