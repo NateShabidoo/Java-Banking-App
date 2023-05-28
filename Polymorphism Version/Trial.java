@@ -3,7 +3,7 @@
 // Dynamic polymorphism is used to provide different menus to users and the admin
 // Admin has privileges to create or delete users
 
-package bank;
+package bank5;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -14,9 +14,6 @@ public class Trial {
     private int ID;
     private String fname;
     private String lname;
-    private int userID;
-    private String userFname;
-    private String userLname;
     private int pinNumber;
     private int tempID;
     private ArrayList<Trial> accounts2;
@@ -41,8 +38,9 @@ protected Trial(int ID, String fname, int pinNumber){
 	}
 
 protected void pinEnter(int tempID) {
-	System.out.println("Enter PIN");
-	Scanner scan = new Scanner(System.in); 
+    System.out.println("Enter 4 Digit PIN");
+    Scanner scan = new Scanner(System.in); 
+    try {
     int y = scan.nextInt(); // this is pin they enter
     boolean found=false;
     int z = tempID;
@@ -58,11 +56,16 @@ protected void pinEnter(int tempID) {
     		 break;
     }
     }
+	} catch (Exception f) {
+		System.out.println("Invalid Entry");
+		pinEnter(tempID);
+	}
 }
 
 protected void subMenu(int tempID) {
-	System.out.println("Enter 1 for checking, 2 for savings, 3 to update PIN, 4 to exit");
-	Scanner scan = new Scanner(System.in); 
+    System.out.println("Enter 1 for checking, 2 for savings, 3 to update PIN, 4 to exit");
+    Scanner scan = new Scanner(System.in); 
+    try {
     int p = scan.nextInt(); // this is the users selection
     boolean found=false;
     for(Trial t:Bank.accounts) {
@@ -83,6 +86,10 @@ protected void subMenu(int tempID) {
     		 break;
     	}
     	}
+	} catch (Exception e) {
+		System.out.println("Invalid Entry");
+		subMenu(tempID);
+	}
 	}
 
 protected ArrayList<Trial> getList() {
