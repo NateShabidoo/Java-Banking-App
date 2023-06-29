@@ -23,9 +23,9 @@ public class User extends Bank {
  	}
 	
 	public static void pinEnter(int tempID) {
-		System.out.println("Enter PIN");
-		Scanner scan = new Scanner(System.in); 
-		try {
+	    System.out.println("Enter PIN");
+	    Scanner scan = new Scanner(System.in); 
+	    try {
 	    int y = scan.nextInt(); // this is pin they enter
 	    boolean found=false;
 	    int z = tempID;
@@ -52,7 +52,7 @@ public class User extends Bank {
 	public void updatePIN(int tempID) {
 		boolean found=false;
 		int z = tempID;
-	    for(Bank t:Main.accounts) {
+	        for(Bank t:Main.accounts) {
 	    	if(z == t.getID()) {
 	    		System.out.println("Please enter new 4 digit PIN");
 	        	Scanner scan = new Scanner(System.in); 
@@ -69,9 +69,9 @@ public class User extends Bank {
 		System.out.println("Enter 1 for checking, 2 for savings, 3 to update PIN, 4 to exit");
 		Scanner scan = new Scanner(System.in); 
 		try {
-	    int p = scan.nextInt(); // this is the users selection
-	    boolean found=false;
-	    for(Bank t:Main.accounts) {
+	        int p = scan.nextInt(); // this is the users selection
+	        boolean found=false;
+	        for(Bank t:Main.accounts) {
 	    	if(p == 1) {
 	   		 checkingMenu(tempID);
 	   		 break;
@@ -105,9 +105,9 @@ public class User extends Bank {
 		System.out.println("Enter 1 for checking balance, 2 to withdraw from checking, 3 to deposit to checking, 4 for main menu");
 		Scanner scan = new Scanner(System.in); 
 		try {
-	    int p = scan.nextInt(); // this is the users selection
-	    boolean found=false;
-	    for(Bank t:Main.accounts) {
+	        int p = scan.nextInt(); // this is the users selection
+	        boolean found=false;
+	        for(Bank t:Main.accounts) {
 	    	if(tempID == t.getID() && p == 1) {
 	      		 checkChecking(tempID);
 	      		 break;
@@ -135,8 +135,8 @@ public class User extends Bank {
 		boolean found=false;
 	    for(Bank t:Main.accounts) {
 	    	if(tempID == t.getID()) {
-	    		System.out.println("How much would you like to withdraw from checking?");
-	        	Scanner scan = new Scanner(System.in); 
+	    	    System.out.println("How much would you like to withdraw from checking?");
+	            Scanner scan = new Scanner(System.in); 
 	            double y = scan.nextDouble(); // this is withdraw amount they enter
 	            if(y <= t.getChecking()) {
 	            	double temp = t.getChecking() - y;
@@ -160,7 +160,7 @@ public class User extends Bank {
 	    	if(tempID == t.getID()) {
 	    		System.out.println("How much would you like to deposit to checking?");
 	        	Scanner scan = new Scanner(System.in); 
-	            double y = scan.nextDouble(); // this is deposit amount they enter
+	                double y = scan.nextDouble(); // this is deposit amount they enter
 	            	double temp = t.getChecking() + y;
 	            	System.out.println("Please deposit in envelope provided");
 	            	System.out.println("Your new checking balance is: "+ String.format("%.2f",temp));
@@ -172,7 +172,7 @@ public class User extends Bank {
 		}
 
 	public void checkChecking(int tempID) {
-		boolean found=false;
+	    boolean found=false;
 	    for(Bank t:Main.accounts) {
 	    	if(tempID == t.getID()) {
 	   		 System.out.println("Your checking balance is $"+t.getChecking());
@@ -183,8 +183,8 @@ public class User extends Bank {
 		}
 
 	public void savingsMenu(int tempID) {
-		System.out.println("Enter 1 for savings balance, 2 to withdraw from savings, 3 to deposit to savings, 4 for main menu");
-		Scanner scan = new Scanner(System.in); 
+	    System.out.println("Enter 1 for savings balance, 2 to withdraw from savings, 3 to deposit to savings, 4 for main menu");
+	    Scanner scan = new Scanner(System.in); 
 	    int p = scan.nextInt(); // this is the users selection
 	    boolean found=false;
 	    for(Bank t:Main.accounts) {
@@ -208,18 +208,18 @@ public class User extends Bank {
 		}
 
 	private void checkSavings(int tempID) {
-		boolean found=false;
+	    boolean found=false;
 	    for(Bank t:Main.accounts) {
 	    	if(tempID == t.getID()) {
 	   		 System.out.println("Your savings balance is $"+getSavings());
 	   		 savingsMenu(tempID);
 	   		 break;
 	   	 	}	
-	    }
+	        }
 		}
 
 	public void withdrawSavings(int tempID) {
-		boolean found=false;
+	    boolean found=false;
 	    for(Bank t:Main.accounts) {
 	    	if(tempID == t.getID()) {
 	    		System.out.println("How much would you like to withdraw from savings?");
@@ -244,12 +244,12 @@ public class User extends Bank {
 		}
 
 	public void depositSavings(int tempID) {
-		boolean found=false;
+	    boolean found=false;
 	    for(Bank t:Main.accounts) {
 	    	if(tempID == t.getID()) {
 	    		System.out.println("How much would you like to deposit to savings?");
 	        	Scanner scan = new Scanner(System.in); 
-	            double y = scan.nextDouble(); // this is deposit amount they enter
+	                double y = scan.nextDouble(); // this is deposit amount they enter
 	            	double temp = getSavings() + y;
 	            	System.out.println("Please deposit in envelope provided");
 	            	System.out.println("Your new savings balance is: "+ String.format("%.2f",temp));
@@ -279,7 +279,7 @@ public class User extends Bank {
 	}
 	 
 	 public String getFname() {
-			return fname;
+	    return fname;
 		}
 	 
 	public int getID() {
