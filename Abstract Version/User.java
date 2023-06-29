@@ -42,7 +42,7 @@ public class User extends Bank {
 	    }
 	    }
 	}
-		catch (Exception f) {
+		catch (Exception e) {
 	        System.out.println("Invalid PIN");
 	        System.out.println("Please Enter a Valid 4 Digit PIN Number");
 	        pinEnter(tempID);
@@ -93,7 +93,7 @@ public class User extends Bank {
 	    		subMenu(tempID);
 	    	}
 	    	}
-		} catch (Exception g) {
+		} catch (Exception e) {
 	        System.out.println("Invalid Choice");
 	        subMenu(tempID);
 	      }	
@@ -125,7 +125,7 @@ public class User extends Bank {
 	    		 break;
 	    	 }
 	    	}
-		} catch (Exception b) {
+		} catch (Exception e) {
 	        System.out.println("Invalid Choice");
 	        checkingMenu(tempID);
 		}
