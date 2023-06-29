@@ -52,7 +52,7 @@ public static void pinEnter(int tempID) {
 	    		 break;
 		 }
 		 }
-		 } catch (Exception t){
+		 } catch (Exception e){
 			System.out.println("Invalid PIN Entry");
 			pinEnter(tempID);
 			}
@@ -73,7 +73,7 @@ public void updatePIN(int tempID) {
             	break;
 	    	}
 	    }
-	} catch (Exception y) {
+	} catch (Exception e) {
 	    	System.out.println("Invalid PIN Format");
 	    	updatePIN(tempID);
 	    }
@@ -138,8 +138,8 @@ public void withdrawChecking(int tempID) {
 	boolean found=false;
         for(Bank t:Main.accounts) {
     	if(tempID == t.getID()) {
-    		System.out.println("How much would you like to withdraw from checking?");
-        	Scanner scan = new Scanner(System.in); 
+    	    System.out.println("How much would you like to withdraw from checking?");
+            Scanner scan = new Scanner(System.in); 
             double y = scan.nextDouble(); // this is withdraw amount they enter
             if(y <= t.getChecking()) {
             	double temp = t.getChecking() - y;
@@ -163,7 +163,7 @@ public void depositChecking(int tempID) {
     	if(tempID == t.getID()) {
     		System.out.println("How much would you like to deposit to checking?");
         	Scanner scan = new Scanner(System.in); 
-            double y = scan.nextDouble(); // this is deposit amount they enter
+                double y = scan.nextDouble(); // this is deposit amount they enter
             	double temp = t.getChecking() + y;
             	System.out.println("Please deposit in envelope provided");
             	System.out.println("Your new checking balance is: "+ String.format("%.2f",temp));
@@ -211,7 +211,7 @@ public void savingsMenu(int tempID) {
 	}
 
 private void checkSavings(int tempID) {
-	boolean found=false;
+    boolean found=false;
     for(Bank t:Main.accounts) {
     	if(tempID == t.getID()) {
    		 System.out.println("Your savings balance is $"+getSavings());
@@ -225,8 +225,8 @@ public void withdrawSavings(int tempID) {
 	boolean found=false;
     for(Bank t:Main.accounts) {
     	if(tempID == t.getID()) {
-    		System.out.println("How much would you like to withdraw from savings?");
-        	Scanner scan = new Scanner(System.in); 
+    	    System.out.println("How much would you like to withdraw from savings?");
+            Scanner scan = new Scanner(System.in); 
             double y = scan.nextDouble(); // this is withdraw amount they enter
             if(y <= getSavings()) {
             	double temp = getSavings() - y;
@@ -252,7 +252,7 @@ public void depositSavings(int tempID) {
     	if(tempID == t.getID()) {
     		System.out.println("How much would you like to deposit to savings?");
         	Scanner scan = new Scanner(System.in); 
-            double y = scan.nextDouble(); // this is deposit amount they enter
+                double y = scan.nextDouble(); // this is deposit amount they enter
             	double temp = getSavings() + y;
             	System.out.println("Please deposit in envelope provided");
             	System.out.println("Your new savings balance is: "+ String.format("%.2f",temp));
@@ -278,15 +278,15 @@ public double getChecking() {
 }
 
 public int getPIN() {
-    return pinNumber;
+        return pinNumber;
 }
  
  public String getFname() {
-		return fname;
+	return fname;
 	}
  
 public int getID() {
-     return ID;
+        return ID;
 }
 
 public double getSavings() {
