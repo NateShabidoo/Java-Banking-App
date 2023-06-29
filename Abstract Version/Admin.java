@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class Admin extends Bank{
     
     protected Admin(int ID, String fname, int pinNumber){
-   	   this.ID = ID;
-   	   this.fname = fname;
-   	   this.pinNumber = pinNumber;
+   	this.ID = ID;
+   	this.fname = fname;
+   	this.pinNumber = pinNumber;
    	}
     
     public static void pinEnter(int tempID) {
@@ -35,7 +35,7 @@ public class Admin extends Bank{
         	 }
         }
     	}
-		catch (Exception d) {
+		catch (Exception e) {
 	        System.out.println("Invalid PIN");
 	        System.out.println("Please Enter a Valid 4 Digit PIN Number");
 	        pinEnter(tempID);
@@ -48,8 +48,8 @@ public class Admin extends Bank{
         for(Bank t:Main.accounts) {
         	if(z == t.getID()) {
         		System.out.println("Please enter new 4 digit PIN");
-            	Scanner scan = new Scanner(System.in); 
-                int y = scan.nextInt(); // this is new pin they enter
+            		Scanner scan = new Scanner(System.in); 
+               		int y = scan.nextInt(); // this is new pin they enter
                 	System.out.println("Your PIN has been updated to "+y);
                 	setPIN(y);
                 	t.subMenu(tempID);
@@ -87,7 +87,7 @@ public class Admin extends Bank{
         	}
         	}
     	}
-    	catch (Exception h) {
+    	catch (Exception e) {
 	        System.out.println("Invalid Choice");
 	        subMenu(tempID);
 	      }	
@@ -112,7 +112,7 @@ public class Admin extends Bank{
         System.out.println("User checking deposit is: "+ String.format("%.2f",x));
         subMenu(tempID);
     	}
-    	catch (Exception n) {
+    	catch (Exception e) {
     		System.out.println("Invalid Value, Restarting 'Create New User'");
     		createUser(tempID);	
     	}
